@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #273c75;
+}
+
+.notification{
+    list-style-type: none;
+    position: fixed;
+    top: 20px;
+    right: 30px;
+}
+
+.notification .toast{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: white;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    animation: show_toast 0.3s ease forwards;
+}
+
+@keyframes show_toast {
+    0%{
+        transform: translateX(100%);
+    }
+
+    40%{
+        transform: translateX(-5%);
+    }
+
+    80%{
+        transform: translateX(0%);
+    }
+
+    100%{
+        transform: translateX(-10px);
+    }
+}
+
+.notification .toast.hide{
+    animation: hide_toast 0.3s ease forwards;
+}
+
+@keyframes hide_toast {
+    0%{
+        transform: translateX(-10px);
+    }
+
+    40%{
+        transform: translateX(0%);
+    }
+
+    80%{
+        transform: translateX(-5%);
+    }
+
+    100%{
+        transform: translateX(100%);
+    }
+}
+
+.notification .toast .msg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification .toast .msg span{
+    margin-left: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.notification .toast::before{
+    position: absolute;
+    content: '';
+    height: 5px;
+    width: 100%;
+    /* border-radius: 2px; */
+    bottom: 0;
+    left: 0;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100%{
+        width: 0%;
+    }
+}
+
+.toast.success::before{
+    background-color: green;
+}
+
+.toast.error::before{
+    background-color: red;
+}
+
+.toast.warning::before{
+    background-color: yellow;
+}
+
+.toast.info::before{
+    background-color: blue;
+}
+
+
+
+.toast.success .msg i{
+    color: green;
+}
+
+.toast.error .msg i{
+    color: red;
+}
+
+.toast.warning .msg i{
+    color: yellow;
+}
+
+.toast.info .msg i{
+    color: blue;
+}
+
+.btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btns .btn{
+    width: 100px;
+    height: 40px;
+    margin: 0 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    color: white;
+}
+
+.btn.success{
+    background-color: green;
+}
+
+.btn.error{
+    background-color: red;
+}
+
+.btn.warning{
+    background-color: yellow;
+}
+.btn.info{
+    background-color: blue;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    background-color: white;
+    color: black;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+@media screen and (max-width: 600px) {
+    .notification{
+        right: 0;
+    }
+
+    .notification .toast{
+        width: 300px;
+    }
+
+    .btns{
+        flex-direction: column;
+    }
+
+    .btns .btn{
+        margin: 20px 0;
+        width: 200px;
+    }
+}
